@@ -71,7 +71,7 @@ a {
 }
 
 .header {
-  background: linear-gradient(135deg, #1a5276, #2980b9);
+  background: linear-gradient(135deg, #5DADE2, #3498DB);
   color: white;
   padding: 30px 20px;
   border-radius: 12px;
@@ -134,7 +134,7 @@ body.dark .box {
 }
 
 body.dark a {
-  color: #7cc7ff;
+  color: #7FC8FF;
 }
 
 body.dark table,
