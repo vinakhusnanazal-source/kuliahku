@@ -95,11 +95,12 @@ a {
 }
 
 .card {
-  background: white;
+  background: #EAF6FF;      
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   transition: transform 0.2s, box-shadow 0.2s;
+  border-left: 6px solid #5DADE2; 
 }
 
 .card:hover {
@@ -113,10 +114,9 @@ a {
 }
 
 .card a {
-  display: inline-block;
-  margin-top: 10px;
+  color: #1a5276;
   font-weight: bold;
-    }
+}
 
 body.dark {
   background: #121212;
@@ -127,7 +127,13 @@ body.dark .header {
   background: linear-gradient(135deg, #0f2027, #203a43);
 }
 
-body.dark .card,
+body.dark .card {
+  background: #1e2a33;     
+  border-left: 6px solid #7FC8FF;
+  color: #e0e0e0;
+}
+
+body.dark .card h3,
 body.dark .box {
   background: #1e1e1e;
   color: #e0e0e0;
