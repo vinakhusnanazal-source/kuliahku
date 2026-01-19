@@ -69,3 +69,50 @@ a {
   color: #2980b9;
   text-decoration: none;
 }
+
+.header {
+  background: linear-gradient(135deg, #1a5276, #2980b9);
+  color: white;
+  padding: 30px 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.header p {
+  margin-top: 10px;
+  opacity: 0.9;
+}
+.materi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #1a5276;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: bold;
+    }
