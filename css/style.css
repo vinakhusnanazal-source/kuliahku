@@ -118,7 +118,40 @@ a {
   font-weight: bold;
     }
 
-.dark-btn {
+body.dark {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+body.dark .header {
+  background: linear-gradient(135deg, #0f2027, #203a43);
+}
+
+body.dark .card,
+body.dark .box {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark a {
+  color: #7cc7ff;
+}
+
+body.dark table,
+body.dark th,
+body.dark td {
+  border-color: #333;
+}
+
+body.dark th {
+  background: #222;
+}
+
+body.dark td {
+  background: #1a1a1a;
+}
+
+.dark-toggle {
   position: fixed;
   top: 15px;
   right: 15px;
@@ -130,35 +163,4 @@ a {
   font-size: 18px;
   z-index: 999;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-#dark-toggle:checked ~ .page {
-  background: #121212;
-  color: #e0e0e0;
-}
-
-#dark-toggle:checked ~ .page .header {
-  background: linear-gradient(135deg, #0f2027, #203a43);
-}
-
-#dark-toggle:checked ~ .page .card,
-#dark-toggle:checked ~ .page .box {
-  background: #1e1e1e;
-  color: #e0e0e0;
-}
-
-#dark-toggle:checked ~ .page a {
-  color: #7cc7ff;
-}
-
-#dark-toggle:checked ~ .page table {
-  border-color: #333;
-}
-
-#dark-toggle:checked ~ .page th {
-  background: #222;
-}
-
-#dark-toggle:checked ~ .page td {
-  background: #1a1a1a;
-}
+                             }
