@@ -81,12 +81,16 @@ a {
 .header h1 {
   margin: 0;
   font-size: 28px;
-}
+  color: #ffffff;
+  font-weight: 700;
+  }
 
 .header p {
   margin-top: 10px;
-  opacity: 0.9;
+  color: #eaf6ff;
+  font-size: 14px;
 }
+
 .materi-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
