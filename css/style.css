@@ -117,3 +117,48 @@ a {
   margin-top: 10px;
   font-weight: bold;
     }
+
+.dark-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #222;
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+#dark-toggle:checked ~ .page {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+#dark-toggle:checked ~ .page .header {
+  background: linear-gradient(135deg, #0f2027, #203a43);
+}
+
+#dark-toggle:checked ~ .page .card,
+#dark-toggle:checked ~ .page .box {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+#dark-toggle:checked ~ .page a {
+  color: #7cc7ff;
+}
+
+#dark-toggle:checked ~ .page table {
+  border-color: #333;
+}
+
+#dark-toggle:checked ~ .page th {
+  background: #222;
+}
+
+#dark-toggle:checked ~ .page td {
+  background: #1a1a1a;
+}
