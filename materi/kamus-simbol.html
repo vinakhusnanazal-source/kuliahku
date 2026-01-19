@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kamus Simbol Aljabar Linear</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<h1>📘 Kamus Simbol & Konsep Dasar</h1>
+<p><strong>Aljabar Linear (dari Nol Mutlak)</strong></p>
+
+<div class="quote">
+Tujuan materi ini:<br>
+Setelah selesai membaca, kamu tidak takut simbol,
+tahu artinya, dan bisa membaca rumus sebagai kalimat manusia.
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>BAGIAN A — Vektor & Simbol Dasar</h2>
+
+<h3>1️⃣ Simbol Vektor</h3>
+<p>
+<span class="vector">v</span><br>
+Dibaca: <em>vektor v</em><br>
+Arti: sebuah panah yang punya arah dan panjang
+</p>
+
+<p><strong>Contoh:</strong></p>
+<p>
+<span class="vector">v</span> = (2, −1)
+</p>
+<ul>
+  <li>2 ke kanan</li>
+  <li>1 ke bawah</li>
+</ul>
+
+<hr>
+
+<p>
+<span class="vector">0</span><br>
+Dibaca: <em>vektor nol</em><br>
+Arti:
+</p>
+<ul>
+  <li>tidak bergerak</li>
+  <li>tidak punya arah</li>
+</ul>
+<p>
+<span class="vector">0</span> = (0, 0)
+</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h3>2️⃣ Simbol Koordinat</h3>
+<p>
+(x, y)<br>
+Dibaca: <em>x koma y</em><br>
+Arti: vektor di bidang datar (2D)
+</p>
+
+<p><strong>Contoh:</strong> (3, 4)</p>
+
+<hr>
+
+<p>
+(x, y, z)<br>
+Arti: vektor di ruang tiga dimensi (3D)
+</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h3>3️⃣ Panjang Vektor (Norm)</h3>
+<p>
+||<span class="vector">v</span>||<br>
+Dibaca: <em>norm v</em><br>
+Arti:
+</p>
+<ul>
+  <li>panjang vektor</li>
+  <li>jarak lurus dari titik awal</li>
+</ul>
+
+<p><strong>Contoh:</strong></p>
+<p>
+||(3,4)|| = 5
+</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h3>4️⃣ Operasi Vektor</h3>
+
+<p><strong>➕ Penjumlahan</strong></p>
+<p>
+<span class="vector">u</span> + <span class="vector">v</span>
+</p>
+<ul>
+  <li>jalan sesuai <span class="vector">u</span></li>
+  <li>lalu lanjut sesuai <span class="vector">v</span></li>
+</ul>
+
+<hr>
+
+<p><strong>✖️ Perkalian Skalar</strong></p>
+<p>
+k<span class="vector">v</span>
+</p>
+<ul>
+  <li>vektor diperbesar / diperkecil</li>
+  <li>arah tetap, panjang berubah</li>
+</ul>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h3>5️⃣ Skalar</h3>
+<p>
+k<br>
+Dibaca: <em>skalar</em><br>
+Arti:
+</p>
+<ul>
+  <li>angka biasa</li>
+  <li>tidak punya arah</li>
+</ul>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>BAGIAN B — Ruang Vektor</h2>
+
+<p>
+ℝ<br>
+Himpunan semua bilangan real
+</p>
+<p>Contoh: −2, 0, 1.5, √2</p>
+
+<hr>
+
+<p>
+ℝ²<br>
+Semua vektor (x, y) → dunia bidang datar
+</p>
+
+<hr>
+
+<p>
+ℝ³<br>
+Semua vektor (x, y, z) → dunia ruang nyata
+</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h3>6️⃣ Keanggotaan</h3>
+
+<p>
+(1,2) ∈ ℝ²<br>
+Artinya: (1,2) adalah vektor di bidang datar
+</p>
+
+<p>
+∉ → bukan anggota
+</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>BAGIAN C — Struktur Ruang Vektor</h2>
+
+<p>
+W ⊂ V<br>
+Artinya: W adalah bagian dari V
+</p>
+
+<hr>
+
+<p>
+a<span class="vector">u</span> + b<span class="vector">v</span><br>
+Kombinasi linier dua vektor
+</p>
+
+<hr>
+
+<p>
+Span(<span class="vector">v</span>₁, <span class="vector">v</span>₂)<br>
+Semua vektor yang bisa dibentuk dari mereka
+</p>
+
+<hr>
+
+<p>
+a<span class="vector">v</span>₁ + b<span class="vector">v</span>₂ = <span class="vector">0</span><br>
+Jika hanya solusi nol → bebas linier
+</p>
+
+<hr>
+
+<p>
+Basis: kumpulan vektor yang bebas linier dan menutup ruang
+</p>
+
+<hr>
+
+<p>
+Dimensi: jumlah arah bebas
+</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>BAGIAN D — Simbol Umum</h2>
+
+<table>
+<tr><th>Simbol</th><th>Arti</th></tr>
+<tr><td>=</td><td>sama dengan</td></tr>
+<tr><td>≠</td><td>tidak sama</td></tr>
+<tr><td>⇒</td><td>maka</td></tr>
+<tr><td>⇔</td><td>jika dan hanya jika</td></tr>
+<tr><td>∀</td><td>untuk semua</td></tr>
+<tr><td>∃</td><td>ada</td></tr>
+</table>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>BAGIAN E — Fokus Khusus ℝ³</h2>
+
+<p>
+Bayangkan:<br>
+kiri–kanan, depan–belakang, bawah–atas
+</p>
+
+<p><strong>➡️ tiga arah bebas</strong></p>
+
+<p>
+<span class="vector">v</span> = (x, y, z)
+</p>
+
+<ul>
+  <li>x: kiri / kanan</li>
+  <li>y: depan / belakang</li>
+  <li>z: atas / bawah</li>
+</ul>
+
+<p><strong>Contoh nyata:</strong></p>
+<p>
+(4,3,10) ∈ ℝ³
+</p>
+
+<p><strong>Basis standar:</strong></p>
+<p>
+(1,0,0), (0,1,0), (0,0,1)
+</p>
+<p>➡️ dimensi 3</p>
+</div>
+
+<div class="quote">
+🎓 Simbol bukan untuk dihafal, tapi dipahami.<br>
+Jika kamu bisa membaca rumus sebagai kalimat,<br>
+maka aljabar linear sudah setengah kamu kuasai.
+</div>
+
+<p><a href="../index.html">⬅ Kembali ke Beranda</a></p>
+
+</body>
+  </html>
