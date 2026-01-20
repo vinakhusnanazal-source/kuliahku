@@ -93,14 +93,43 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
 }
+/* ============================= */
+/* VARIABEL WARNA (GLOBAL) */
+:root {
+  /* BLUE (LIGHT MODE) */
+  --blue-primary: #2563EB;
+  --blue-sky: #60A5FA;
+  --blue-navy: #1E40AF;
+
+  /* TEXT (LIGHT MODE) */
+  --text-on-blue: #FFFFFF;
+  --text-dark: #0F172A;
+  --text-muted: #475569;
+
+  /* BACKGROUND (LIGHT MODE) */
+  --bg-main: #F8FAFC;
+  --bg-card: #FFFFFF;
+}
 
 .card {
-  background: #EAF6FF;      
+  background: var(--bg-card);
+  border-left: 6px solid var(--blue-sky);
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
-  border-left: 6px solid #5DADE2; 
+}
+.button-blue {
+  background: var(--blue-primary);
+  color: var(--text-on-blue);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.button-blue:hover {
+  background: var(--blue-navy);
 }
 
 .card:hover {
@@ -225,4 +254,33 @@ body.dark.focus .box {
 body.dark.focus .header,
 body.dark.focus .card {
   opacity: 0.5;
+}
+body {
+  background: var(--bg-main);
+  color: var(--text-dark);
+  font-family: Arial, sans-serif;
+}
+/* ============================= */
+/* DARK MODE VARIABLES */
+body.dark {
+  --bg-main: #0F172A;
+  --bg-card: #111827;
+
+  --text-dark: #E5E7EB;
+  --text-muted: #9CA3AF;
+
+  --blue-primary: #3B82F6;
+  --blue-navy: #60A5FA;
+}
+body.dark .button-blue {
+  background: var(--blue-primary);
+  color: #FFFFFF;
+}
+
+body.dark .button-blue:hover {
+  background: var(--blue-navy);
+}
+
+a {
+  color: var(--blue-primary);
 }
