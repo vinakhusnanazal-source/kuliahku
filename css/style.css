@@ -170,3 +170,59 @@ body.dark td {
   z-index: 999;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
                              }
+/* ============================= */
+/* FOCUS MODE BUTTON */
+.focus-toggle {
+  position: fixed;
+  top: 15px;
+  right: 65px; /* di sebelah tombol dark mode */
+  background: #e5e7eb;
+  color: #0f172a;
+  padding: 10px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ============================= */
+/* MODE FOKUS BACA */
+body.focus {
+  background: #f8fafc;
+}
+
+/* Konten utama lebih sempit & fokus */
+body.focus .box {
+  max-width: 720px;
+  margin: 30px auto;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+/* Header & card non-utama diredam */
+body.focus .header,
+body.focus .card {
+  opacity: 0.6;
+}
+
+/* Quote & rumus tetap jelas */
+body.focus .quote,
+body.focus .rumus {
+  opacity: 1;
+}
+/* FOCUS MODE + DARK */
+body.dark.focus {
+  background: #020617;
+}
+
+body.dark.focus .box {
+  background: #020617;
+  color: #e5e7eb;
+  border-left-color: #38bdf8;
+}
+
+body.dark.focus .header,
+body.dark.focus .card {
+  opacity: 0.5;
+}
