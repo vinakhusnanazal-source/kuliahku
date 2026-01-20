@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>BAB 0 – Bahasa & Struktur Dasar Aljabar Vektor</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<button id="darkToggle" class="dark-toggle">🌙</button>
+
+<h1>🌱 BAB 0 — Bahasa & Struktur Dasar Aljabar Vektor</h1>
+<p><em>(dari nol mutlak, tanpa lompat konsep)</em></p>
+
+<div class="quote">
+<strong>Tujuan BAB 0:</strong><br>
+BAB ini tidak fokus menghitung, tetapi membangun cara berpikir
+agar simbol dan struktur aljabar linear terasa masuk akal.
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>0️⃣ Tujuan Pembelajaran</h2>
+<p>Setelah menyelesaikan BAB 0, kamu diharapkan mampu:</p>
+<ul>
+  <li>membaca simbol matematika sebagai kalimat</li>
+  <li>memahami apa itu vektor dan ruang vektor</li>
+  <li>memahami makna ruang kolom dan ruang baris</li>
+  <li>siap masuk perhitungan tanpa kebingungan konsep</li>
+</ul>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>1️⃣ Vektor</h2>
+
+<p><strong>Definisi intuitif</strong></p>
+<div class="quote">
+Vektor adalah sesuatu yang memiliki <strong>arah</strong> dan <strong>besar</strong>
+</div>
+
+<ul>
+  <li>bukan hanya “berapa”</li>
+  <li>tetapi juga “ke mana”</li>
+</ul>
+
+<p><strong>Definisi formal</strong></p>
+<div class="quote">
+Vektor adalah elemen (anggota) dari suatu ruang vektor
+</div>
+
+<p>
+📌 Artinya: vektor <strong>selalu hidup di dalam sebuah ruang</strong>
+</p>
+
+<p><strong>Contoh:</strong></p>
+<ul>
+  <li>(3, 4) → 3 ke kanan, 4 ke atas</li>
+  <li>angin 10 km/jam ke utara</li>
+  <li>gaya 5 N ke bawah</li>
+</ul>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>2️⃣ Skalar</h2>
+
+<p><strong>Definisi intuitif</strong></p>
+<div class="quote">
+Skalar adalah angka biasa, tanpa arah
+</div>
+
+<p><strong>Definisi formal</strong></p>
+<div class="quote">
+Skalar adalah bilangan real yang digunakan untuk mengalikan vektor
+</div>
+
+<p><strong>Contoh:</strong></p>
+<ul>
+  <li>2, −3, 0.5</li>
+  <li>suhu 30°C</li>
+  <li>massa 60 kg</li>
+</ul>
+
+<p>
+📌 Skalar mengubah <strong>besar</strong> vektor, bukan arah dasarnya.
+</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>3️⃣ Ruang Vektor (Konsep Terpenting)</h2>
+
+<p><strong>Definisi intuitif</strong></p>
+<div class="quote">
+Ruang vektor adalah “dunia” tempat vektor hidup,
+dengan aturan yang konsisten
+</div>
+
+<p>
+Analogi:
+</p>
+<ul>
+  <li>papan catur → aturan gerak</li>
+  <li>ruang vektor → aturan operasi vektor</li>
+</ul>
+
+<p><strong>Definisi formal (disederhanakan)</strong></p>
+<p>
+Sebuah himpunan <strong>V</strong> disebut ruang vektor jika:
+</p>
+<ol>
+  <li>elemen-elemennya disebut vektor</li>
+  <li>vektor dapat dijumlahkan</li>
+  <li>vektor dapat dikalikan skalar</li>
+  <li>hasilnya tetap berada di dalam V</li>
+</ol>
+
+<p><strong>Bukan ruang vektor:</strong></p>
+<p>
+{(x, y) | x &gt; 0}
+</p>
+<p>
+❌ karena jika dikalikan −1, hasilnya keluar dari himpunan
+</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>📌 Teorema 1 — Vektor Nol Unik</h2>
+
+<p><strong>Pernyataan</strong></p>
+<div class="quote">
+Dalam setiap ruang vektor, hanya ada satu vektor nol
+</div>
+
+<p><strong>Bukti singkat</strong></p>
+<p>
+Misalkan ada dua vektor nol: <span class="vector">0</span><sub>1</sub> dan
+<span class="vector">0</span><sub>2</sub>
+</p>
+
+<p>
+Karena keduanya vektor nol:
+</p>
+<p>
+<span class="vector">0</span><sub>1</sub> +
+<span class="vector">0</span><sub>2</sub>
+=
+<span class="vector">0</span><sub>2</sub>
+</p>
+
+<p>
+dan juga:
+</p>
+<p>
+<span class="vector">0</span><sub>1</sub> +
+<span class="vector">0</span><sub>2</sub>
+=
+<span class="vector">0</span><sub>1</sub>
+</p>
+
+<p>
+Maka:
+</p>
+<p>
+<span class="vector">0</span><sub>1</sub> =
+<span class="vector">0</span><sub>2</sub>
+</p>
+
+<p>✅ Terbukti unik</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>4️⃣ Vektor Nol</h2>
+
+<p><strong>Definisi intuitif</strong></p>
+<div class="quote">
+Vektor nol adalah vektor “diam”
+</div>
+
+<p><strong>Definisi formal</strong></p>
+<p>
+Vektor <span class="vector">0</span> sehingga:
+</p>
+<p>
+<span class="vector">v</span> +
+<span class="vector">0</span>
+=
+<span class="vector">v</span>
+</p>
+
+<p><strong>Contoh:</strong></p>
+<ul>
+  <li>(0,0) di ℝ²</li>
+  <li>(0,0,0) di ℝ³</li>
+</ul>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>5️⃣ Kombinasi Linier</h2>
+
+<p><strong>Definisi intuitif</strong></p>
+<div class="quote">
+Kombinasi linier adalah cara “merakit” vektor
+dari vektor lain
+</div>
+
+<p><strong>Definisi formal</strong></p>
+<p>
+a<span class="vector">v</span><sub>1</sub> +
+b<span class="vector">v</span><sub>2</sub>
+</p>
+
+<p><strong>Contoh:</strong></p>
+<p>
+2(1,0) + 3(0,1) = (2,3)
+</p>
+
+<p>
+📌 Hampir semua vektor dibuat dengan cara ini
+</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>6️⃣ Subruang Vektor</h2>
+
+<p><strong>Definisi intuitif</strong></p>
+<div class="quote">
+Subruang adalah ruang vektor kecil
+di dalam ruang yang lebih besar
+</div>
+
+<p><strong>Syarat subruang</strong></p>
+<ol>
+  <li>mengandung <span class="vector">0</span></li>
+  <li>tertutup terhadap penjumlahan</li>
+  <li>tertutup terhadap perkalian skalar</li>
+</ol>
+
+<p><strong>Contoh:</strong></p>
+<p>
+W = {(x, 2x)}
+</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>7️⃣ Ruang Kolom (Column Space)</h2>
+
+<p><strong>Definisi intuitif</strong></p>
+<div class="quote">
+Ruang kolom adalah semua vektor hasil
+yang bisa dicapai oleh suatu matriks
+</div>
+
+<p><strong>Definisi formal</strong></p>
+<p>
+Col(A) = span dari kolom-kolom A
+</p>
+
+<p><strong>Contoh:</strong></p>
+<p>
+Jika kolom A = (1,0), (0,1)  
+maka Col(A) = ℝ²
+</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>8️⃣ Ruang Baris (Row Space)</h2>
+
+<p><strong>Definisi intuitif</strong></p>
+<div class="quote">
+Ruang baris adalah semua informasi independen
+yang dipakai matriks
+</div>
+
+<p><strong>Definisi formal</strong></p>
+<p>
+Row(A) = span dari baris-baris A
+</p>
+
+<p><strong>Contoh:</strong></p>
+<p>
+Jika semua baris searah,
+maka ruang baris berdimensi 1
+</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>9️⃣ Basis</h2>
+
+<p><strong>Definisi intuitif</strong></p>
+<div class="quote">
+Basis adalah kumpulan vektor
+paling sedikit tapi cukup
+</div>
+
+<p><strong>Definisi formal</strong></p>
+<p>
+Basis adalah himpunan vektor yang:
+</p>
+<ol>
+  <li>bebas linier</li>
+  <li>menutup ruang</li>
+</ol>
+
+<p><strong>Contoh basis ℝ²:</strong></p>
+<p>
+(1,0), (0,1)
+</p>
+</div>
+
+<!-- ========================= -->
+<div class="box">
+<h2>🔟 Dimensi</h2>
+
+<p><strong>Definisi intuitif</strong></p>
+<div class="quote">
+Dimensi adalah jumlah arah bebas
+</div>
+
+<p><strong>Definisi formal</strong></p>
+<p>
+Dimensi = banyaknya vektor dalam suatu basis
+</p>
+
+<p><strong>Contoh:</strong></p>
+<ul>
+  <li>garis → dimensi 1</li>
+  <li>bidang → dimensi 2</li>
+  <li>ruang → dimensi 3</li>
+</ul>
+</div>
+
+<div class="quote">
+🎓 <strong>Rangkuman dosen:</strong><br>
+BAB 0 mengajarkan cara berpikir, bukan menghitung.<br>
+Semua konsep lanjutan hanyalah konsekuensi logis dari ini.
+</div>
+
+<p><a href="../index.html">⬅ Kembali ke Beranda</a></p>
+
+<script src="../js/darkmode.js"></script>
+<script src="../js/focusmode.js"></script>
+</body>
+  </html>
