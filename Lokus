@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lokus Parabola</title>
+<style>
+:root{box-sizing:border-box;--bg:#fafaf7;--grid:#e4e4dc;--axis:#555;--txt:#222;--m:#d97706;--b:#059669;--k:#2563eb;--loc:#e11d48;--panel:rgba(255,255,255,.93);
+padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15161a;--grid:#2a2c33;--axis:#aaa;--txt:#eee;--m:#fbbf24;--b:#34d399;--k:#60a5fa;--loc:#fb7185;--panel:rgba(30,31,36,.93)}}
+:root[data-theme="dark"]{--bg:#15161a;--grid:#2a2c33;--axis:#aaa;--txt:#eee;--m:#fbbf24;--b:#34d399;--k:#60a5fa;--loc:#fb7185;--panel:rgba(30,31,36,.93)}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#ui{position:fixed;left:8px;right:8px;top:calc(8px + env(safe-area-inset-top,0px));pointer-events:none}
+#bot{position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));pointer-events:none}
+.box{pointer-events:auto;background:var(--panel);border:1px solid var(--grid);border-radius:10px;padding:7px 10px;font-size:12.5px;line-height:1.45;max-width:440px}
+.row{display:flex;gap:4px 12px;flex-wrap:wrap;align-items:center;margin-top:4px}
+label{display:flex;gap:5px;align-items:center}
+input[type=range]{flex:1;min-width:120px}
+button{font:inherit;padding:4px 10px;border-radius:8px;border:1px solid var(--axis);background:transparent;color:var(--txt)}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+<div id="ui"><div class="box">
+  <b>Lokus Parabola</b> — seret titik <b style="color:var(--k)">P</b> pada garis direktriks.
+  <div class="row"><label style="flex:1">p = <span id="pv">-2.0</span>
+    <input type="range" id="p" min="-5" max="5" step="0.1" value="-2"></label></div>
+  <div class="row">
+    <label><input type="checkbox" id="kl" checked> Lokus</label>
+    <label><input type="checkbox" id="kc" checked> Konstruksi</label>
+    <button id="anim">Animasi P</button><button id="reset">Reset</button>
+  </div>
+</div></div>
+<div id="bot"><div class="box" id="info"></div></div>
+<script>
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d'),$=id=>document.getElementById(id);
+let W,H,dpr=1,view={s:45,ox:0,oy:0},p=-2,t=3,anim=false,dir=1;
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function resize(){dpr=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;
+  if(!view.init){view.ox=W/2;view.oy=H*0.5;view.init=1}draw()}
+addEventListener('resize',resize);
+const toS=q=>({x:view.ox+q.x*view.s,y:view.oy-q.y*view.s});
+const toW=(x,y)=>({x:(x-view.ox)/view.s,y:(view.oy-y)/view.s});
+function niceStep(){const q=90/view.s,e=Math.pow(10,Math.floor(Math.log10(q))),m=q/e;return(m<1.5?1:m<3.5?2:m<7.5?5:10)*e}
+function fmt(v,st){return(Math.abs(v)<st/1e3?0:+v.toFixed(Math.max(0,-Math.floor(Math.log10(st))+1))).toString()}
+function line(a,b,col,dash,w){const s=toS(a),e=toS(b),dx=e.x-s.x,dy=e.y-s.y,l=Math.hypot(dx,dy);if(l<1e-9)return;
+  const L=(W+H)*3/l;ctx.beginPath();ctx.moveTo(s.x-dx*L,s.y-dy*L);ctx.lineTo(s.x+dx*L,s.y+dy*L);
+  ctx.strokeStyle=col;ctx.lineWidth=w||1.4;ctx.setLineDash(dash||[]);ctx.stroke();ctx.setLineDash([])}
+function seg(a,b,col,w){const s=toS(a),e=toS(b);ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(e.x,e.y);ctx.strokeStyle=col;ctx.lineWidth=w||2;ctx.stroke()}
+function dot(q,col,lab,r,off){const s=toS(q);ctx.beginPath();ctx.arc(s.x,s.y,r,0,7);ctx.fillStyle=col;ctx.fill();
+  if(lab){ctx.fillStyle=css('--txt');ctx.font='bold 15px system-ui';ctx.fillText(lab,s.x+(off?off[0]:9),s.y+(off?off[1]:-9))}}
+
+function draw(){
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.fillStyle=css('--bg');ctx.fillRect(0,0,W,H);
+  const st=niceStep(),tl=toW(0,0),br=toW(W,H);
+  ctx.lineWidth=1;ctx.strokeStyle=css('--grid');ctx.beginPath();
+  for(let x=Math.ceil(tl.x/st)*st;x<=br.x;x+=st){const sx=toS({x,y:0}).x;ctx.moveTo(sx,0);ctx.lineTo(sx,H)}
+  for(let y=Math.ceil(br.y/st)*st;y<=tl.y;y+=st){const sy=toS({x:0,y}).y;ctx.moveTo(0,sy);ctx.lineTo(W,sy)}
+  ctx.stroke();
+  const o=toS({x:0,y:0});ctx.strokeStyle=css('--axis');ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(0,o.y);ctx.lineTo(W,o.y);ctx.moveTo(o.x,0);ctx.lineTo(o.x,H);ctx.stroke();
+  ctx.fillStyle=css('--axis');ctx.font='11px system-ui';
+  const ly=Math.min(Math.max(o.y+13,12),H-4),lx=Math.min(Math.max(o.x+4,2),W-30);
+  for(let x=Math.ceil(tl.x/st)*st;x<=br.x;x+=st){if(Math.abs(x)<st/1e3)continue;ctx.fillText(fmt(x,st),toS({x,y:0}).x+2,ly)}
+  for(let y=Math.ceil(br.y/st)*st;y<=tl.y;y+=st){if(Math.abs(y)<st/1e3)continue;ctx.fillText(fmt(y,st),lx,toS({x:0,y}).y-3)}
+
+  if(Math.abs(p)<0.05){$('info').textContent='p mendekati 0: parabola menyempit menjadi garis. Ubah nilai p.';return}
+  const F={x:p,y:0},P={x:-p,y:t},R={x:t*t/(4*p),y:t},M={x:0,y:t/2};
+  // direktriks m: x = -p
+  line({x:-p,y:0},{x:-p,y:1},css('--m'),[],2);
+  ctx.fillStyle=css('--m');ctx.font='bold 13px system-ui';ctx.fillText('m: x = '+(-p).toFixed(1),toS({x:-p,y:0}).x+6,H*0.2);
+  // lokus
+  if($('kl').checked){
+    ctx.beginPath();const y0=Math.min(tl.y,br.y)-1,y1=Math.max(tl.y,br.y)+1,n=500;
+    for(let i=0;i<=n;i++){const yy=y0+(y1-y0)*i/n,s=toS({x:yy*yy/(4*p),y:yy});i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y)}
+    ctx.strokeStyle=css('--loc');ctx.lineWidth=2.5;ctx.stroke();
+    // jejak titik R
+    ctx.fillStyle=css('--loc');
+    for(let yy=Math.ceil(br.y);yy<=tl.y;yy+=0.5){const s=toS({x:yy*yy/(4*p),y:yy});ctx.beginPath();ctx.arc(s.x,s.y,2,0,7);ctx.fill()}
+  }
+  if($('kc').checked){
+    line(P,{x:P.x+1,y:P.y},css('--k'),[6,5],1.3);                 // garis tegak lurus m melalui P
+    line(M,{x:M.x+t,y:M.y+2*p},css('--b'),[6,5],1.3);              // sumbu ruas PF
+    seg(P,R,css('--k'),3);seg(R,F,css('--b'),3);
+    dot(M,css('--b'),null,3);
+  }
+  dot(F,css('--m'),'F',6);dot(P,css('--k'),'P',8);dot(R,css('--loc'),'R',7);
+  const d1=Math.hypot(P.x-R.x,P.y-R.y),d2=Math.hypot(R.x-F.x,R.y-F.y);
+  $('info').innerHTML=`F(${p.toFixed(1)}, 0) · P(${(-p).toFixed(1)}, ${t.toFixed(2)}) · R(${R.x.toFixed(2)}, ${R.y.toFixed(2)})<br>`+
+   `<b style="color:var(--k)">PR</b> = ${d1.toFixed(2)} &nbsp; <b style="color:var(--b)">RF</b> = ${d2.toFixed(2)} → selalu sama<br>`+
+   `Persamaan lokus: y² = 4px = ${(4*p).toFixed(1)}x`}
+
+const ptr=new Map();let drag=null,pinch=null;
+function zoomAt(f,x,y){const w=toW(x,y);view.s=Math.min(Math.max(view.s*f,2),1e5);view.ox=x-w.x*view.s;view.oy=y+w.y*view.s}
+cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);ptr.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(ptr.size===1){const q=toS({x:-p,y:t});drag=Math.hypot(q.x-e.clientX,q.y-e.clientY)<28?'P':'pan';if(drag==='P')anim=false}
+  else{drag=null;const [a,b]=[...ptr.values()];pinch={d:Math.hypot(a.x-b.x,a.y-b.y)}}});
+cv.addEventListener('pointermove',e=>{const q=ptr.get(e.pointerId);if(!q)return;const dx=e.clientX-q.x,dy=e.clientY-q.y;
+  ptr.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(ptr.size===2&&pinch){const [a,b]=[...ptr.values()],d=Math.hypot(a.x-b.x,a.y-b.y);zoomAt(d/pinch.d,(a.x+b.x)/2,(a.y+b.y)/2);pinch.d=d;draw();return}
+  if(drag==='pan'){view.ox+=dx;view.oy+=dy}else if(drag==='P'){t=toW(e.clientX,e.clientY).y}
+  draw()});
+const up=e=>{ptr.delete(e.pointerId);if(ptr.size<2)pinch=null;if(!ptr.size)drag=null};
+cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+cv.addEventListener('wheel',e=>{e.preventDefault();zoomAt(Math.exp(-e.deltaY*0.0015),e.clientX,e.clientY);draw()},{passive:false});
+$('p').oninput=e=>{p=+e.target.value;$('pv').textContent=p.toFixed(1);draw()};
+$('kl').onchange=$('kc').onchange=draw;
+$('anim').onclick=()=>{anim=!anim};
+$('reset').onclick=()=>{view={s:45,ox:W/2,oy:H*0.5,init:1};p=-2;t=3;$('p').value=-2;$('pv').textContent='-2.0';anim=false;draw()};
+(function loop(){if(anim){t+=0.05*dir;if(Math.abs(t)>7)dir=-dir;draw()}requestAnimationFrame(loop)})();
+resize();
+</script>
+</body>
+</html>
